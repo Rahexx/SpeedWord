@@ -15,6 +15,14 @@
     &__time
         +mq(extra-large)
             margin-left: 10vw
+    &__time-value
+        display: inline-block
+    &__time-value--animate
+        animation-name: decreaseSize
+        animation-duration: 1s
+        animation-iteration-count: 5
+        animation-timing-function: ease
+        animation-fill-mode: backwards
     &__input
         height: 30px
         width: 50vw
@@ -95,3 +103,9 @@
             height: 50px
             width: 12vw
             font-size: 22px
+
+@keyframes decreaseSize
+    from
+        transform: scale(1)
+    to
+        transform: scale(0)

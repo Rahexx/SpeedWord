@@ -84,7 +84,7 @@ class Game {
     this.gameTime = time;
   }
 
-  // checkInput() {}
+  // TODO: create method checkInput
 }
 
 export default Game;

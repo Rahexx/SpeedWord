@@ -324,6 +324,23 @@
   }
 }
 
+.game__time-value {
+  display: inline-block;
+}
+
+.game__time-value--animate {
+  -webkit-animation-name: decreaseSize;
+          animation-name: decreaseSize;
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+  -webkit-animation-iteration-count: 5;
+          animation-iteration-count: 5;
+  -webkit-animation-timing-function: ease;
+          animation-timing-function: ease;
+  -webkit-animation-fill-mode: backwards;
+          animation-fill-mode: backwards;
+}
+
 .game__input {
   height: 30px;
   width: 50vw;
@@ -476,6 +493,28 @@
     height: 50px;
     width: 12vw;
     font-size: 22px;
+  }
+}
+
+@-webkit-keyframes decreaseSize {
+  from {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  to {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+}
+
+@keyframes decreaseSize {
+  from {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+  to {
+    -webkit-transform: scale(0);
+            transform: scale(0);
   }
 }
 /*# sourceMappingURL=style.css.map */
