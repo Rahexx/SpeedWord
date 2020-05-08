@@ -1,5 +1,20 @@
 .game
     color: white
+    &__info
+        +mq(medium)
+            font-size: 32px
+        +mq(xlarge)
+            font-size: 16px
+        +mq(large)
+            font-size: 32px
+        +mq(extra-large)
+            font-size: 26px
+    &__level-content
+        +mq(extra-large)
+            margin-right: 10vw
+    &__time
+        +mq(extra-large)
+            margin-left: 10vw
     &__input
         height: 30px
         width: 50vw
@@ -8,11 +23,43 @@
         border: 2px solid #aaa
         outline: none
         transition: .5s
+        +mq(xsmall)
+            width: 45vw
+        +mq(small)
+            width: 35vw
+        +mq(medium)
+            height: 50px
+            width: 45vw
+            padding: 16px
+            font-size: 32px
+        +mq(xlarge)
+            height: 30px
+            width: 35vw
+            padding: 5px 10px
+            font-size: 16px
+        +mq(large)
+            height: 50px
+            width: 42vw
+            padding: 16px
+            font-size: 32px
+        +mq(extra-large)
+            height: 40px
+            width: 20vw
+            padding: 5px 10px
+            font-size: 16px
         &:focus
             border-color: #F25116
             box-shadow: 0 0 20px #F25116
     &__password
         text-transform: uppercase
+        +mq(medium)
+            font-size: 54px
+        +mq(xlarge)
+            font-size: 32px
+        +mq(large)
+            font-size: 54px
+        +mq(extra-large)
+            font-size: 32px
     &__start
         height: 50px
         width: 40vw
@@ -28,3 +75,23 @@
         outline: none
         box-shadow: none
         cursor: pointer
+        +mq(xsmall)
+            width: 30vw
+        +mq(small)
+            width: 25vw
+        +mq(medium)
+            height: 70px
+            width: 32vw
+            font-size: 32px
+        +mq(xlarge)
+            height: 40px
+            width: 25vw
+            font-size: 18px
+        +mq(large)
+            height: 70px
+            width: 28vw
+            font-size: 32px
+        +mq(extra-large)
+            height: 50px
+            width: 12vw
+            font-size: 22px

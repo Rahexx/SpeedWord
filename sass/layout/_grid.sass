@@ -4,14 +4,30 @@
     grid-template: 30vh 1fr / 1fr
     background-color: #2C2C2C
     font-family: 'Ubuntu', sans-serif
+    +mq(xsmall)
+        grid-template: 35vh 1fr / 1fr
+    +mq(small)
+        grid-template: 30vh 1fr / 1fr
     &__header
         display: grid
     &__game
         display: grid
         grid-template: 15vh 15vh 1fr / 1fr
+        +mq(xsmall)
+            grid-template: 10vh 15vh 1fr / 1fr
+        +mq(small)
+            grid-template: 15vh 15vh 1fr / 1fr
 .header
     &__title
         +gridCenter
+        +mq(medium)
+            align-self: end
+        +mq(xlarge)
+            +gridCenter
+        +mq(large)
+            align-self: end
+        +mq(extra-large)
+            +gridCenter
     &__explanation
         +gridCenter
 .game
@@ -21,8 +37,12 @@
         grid-auto-flow: column
     &__level-content
         +gridCenter
+        +mq(extra-large)
+            justify-self: right
     &__time
         +gridCenter
+        +mq(extra-large)
+            justify-self: left
     &__password
         +gridCenter
     &__form
@@ -32,3 +52,11 @@
         +gridCenter
     &__start
         +gridCenter
+        +mq(medium)
+            align-self: start
+        +mq(xlarge)
+            +gridCenter
+        +mq(large)
+            align-self: start
+        +mq(extra-large)
+            +gridCenter

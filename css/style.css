@@ -16,6 +16,22 @@
   font-family: 'Ubuntu', sans-serif;
 }
 
+@media (min-width: 533px) {
+  .page {
+    -ms-grid-rows: 35vh 1fr;
+    -ms-grid-columns: 1fr;
+        grid-template: 35vh 1fr / 1fr;
+  }
+}
+
+@media (min-width: 731px) {
+  .page {
+    -ms-grid-rows: 30vh 1fr;
+    -ms-grid-columns: 1fr;
+        grid-template: 30vh 1fr / 1fr;
+  }
+}
+
 .page__header {
   display: -ms-grid;
   display: grid;
@@ -29,12 +45,64 @@
       grid-template: 15vh 15vh 1fr / 1fr;
 }
 
+@media (min-width: 533px) {
+  .page__game {
+    -ms-grid-rows: 10vh 15vh 1fr;
+    -ms-grid-columns: 1fr;
+        grid-template: 10vh 15vh 1fr / 1fr;
+  }
+}
+
+@media (min-width: 731px) {
+  .page__game {
+    -ms-grid-rows: 15vh 15vh 1fr;
+    -ms-grid-columns: 1fr;
+        grid-template: 15vh 15vh 1fr / 1fr;
+  }
+}
+
 .header__title {
   -ms-grid-column-align: center;
       justify-self: center;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
+}
+
+@media (min-width: 768px) {
+  .header__title {
+    -ms-flex-item-align: end;
+        -ms-grid-row-align: end;
+        align-self: end;
+  }
+}
+
+@media (min-width: 812px) {
+  .header__title {
+    -ms-grid-column-align: center;
+        justify-self: center;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .header__title {
+    -ms-flex-item-align: end;
+        -ms-grid-row-align: end;
+        align-self: end;
+  }
+}
+
+@media (min-width: 1200px) {
+  .header__title {
+    -ms-grid-column-align: center;
+        justify-self: center;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+  }
 }
 
 .header__explanation {
@@ -62,12 +130,26 @@
       align-self: center;
 }
 
+@media (min-width: 1200px) {
+  .game__level-content {
+    -ms-grid-column-align: right;
+        justify-self: right;
+  }
+}
+
 .game__time {
   -ms-grid-column-align: center;
       justify-self: center;
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
+}
+
+@media (min-width: 1200px) {
+  .game__time {
+    -ms-grid-column-align: left;
+        justify-self: left;
+  }
 }
 
 .game__password {
@@ -102,8 +184,68 @@
       align-self: center;
 }
 
+@media (min-width: 768px) {
+  .game__start {
+    -ms-flex-item-align: start;
+        -ms-grid-row-align: start;
+        align-self: start;
+  }
+}
+
+@media (min-width: 812px) {
+  .game__start {
+    -ms-grid-column-align: center;
+        justify-self: center;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+  }
+}
+
+@media (min-width: 1024px) {
+  .game__start {
+    -ms-flex-item-align: start;
+        -ms-grid-row-align: start;
+        align-self: start;
+  }
+}
+
+@media (min-width: 1200px) {
+  .game__start {
+    -ms-grid-column-align: center;
+        justify-self: center;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+  }
+}
+
 .header {
   color: white;
+}
+
+@media (min-width: 768px) {
+  .header__title {
+    font-size: 48px;
+  }
+}
+
+@media (min-width: 812px) {
+  .header__title {
+    font-size: 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .header__title {
+    font-size: 48px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .header__title {
+    font-size: 40px;
+  }
 }
 
 .header__explanation {
@@ -111,8 +253,75 @@
   text-align: center;
 }
 
+@media (min-width: 533px) {
+  .header__explanation {
+    width: 90vw;
+  }
+}
+
+@media (min-width: 768px) {
+  .header__explanation {
+    font-size: 30px;
+  }
+}
+
+@media (min-width: 812px) {
+  .header__explanation {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .header__explanation {
+    font-size: 30px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .header__explanation {
+    width: 50vw;
+    font-size: 22px;
+  }
+}
+
 .game {
   color: white;
+}
+
+@media (min-width: 768px) {
+  .game__info {
+    font-size: 32px;
+  }
+}
+
+@media (min-width: 812px) {
+  .game__info {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .game__info {
+    font-size: 32px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .game__info {
+    font-size: 26px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .game__level-content {
+    margin-right: 10vw;
+  }
+}
+
+@media (min-width: 1200px) {
+  .game__time {
+    margin-left: 10vw;
+  }
 }
 
 .game__input {
@@ -126,6 +335,54 @@
   transition: .5s;
 }
 
+@media (min-width: 533px) {
+  .game__input {
+    width: 45vw;
+  }
+}
+
+@media (min-width: 731px) {
+  .game__input {
+    width: 35vw;
+  }
+}
+
+@media (min-width: 768px) {
+  .game__input {
+    height: 50px;
+    width: 45vw;
+    padding: 16px;
+    font-size: 32px;
+  }
+}
+
+@media (min-width: 812px) {
+  .game__input {
+    height: 30px;
+    width: 35vw;
+    padding: 5px 10px;
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .game__input {
+    height: 50px;
+    width: 42vw;
+    padding: 16px;
+    font-size: 32px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .game__input {
+    height: 40px;
+    width: 20vw;
+    padding: 5px 10px;
+    font-size: 16px;
+  }
+}
+
 .game__input:focus {
   border-color: #F25116;
   -webkit-box-shadow: 0 0 20px #F25116;
@@ -134,6 +391,30 @@
 
 .game__password {
   text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+  .game__password {
+    font-size: 54px;
+  }
+}
+
+@media (min-width: 812px) {
+  .game__password {
+    font-size: 32px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .game__password {
+    font-size: 54px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .game__password {
+    font-size: 32px;
+  }
 }
 
 .game__start {
@@ -152,5 +433,49 @@
   -webkit-box-shadow: none;
           box-shadow: none;
   cursor: pointer;
+}
+
+@media (min-width: 533px) {
+  .game__start {
+    width: 30vw;
+  }
+}
+
+@media (min-width: 731px) {
+  .game__start {
+    width: 25vw;
+  }
+}
+
+@media (min-width: 768px) {
+  .game__start {
+    height: 70px;
+    width: 32vw;
+    font-size: 32px;
+  }
+}
+
+@media (min-width: 812px) {
+  .game__start {
+    height: 40px;
+    width: 25vw;
+    font-size: 18px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .game__start {
+    height: 70px;
+    width: 28vw;
+    font-size: 32px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .game__start {
+    height: 50px;
+    width: 12vw;
+    font-size: 22px;
+  }
 }
 /*# sourceMappingURL=style.css.map */

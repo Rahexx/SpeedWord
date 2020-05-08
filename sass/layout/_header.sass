@@ -1,5 +1,25 @@
 .header
     color: white
+    &__title
+        +mq(medium)
+            font-size: 48px
+        +mq(xlarge)
+            font-size: 32px
+        +mq(large)
+            font-size: 48px
+        +mq(extra-large)
+            font-size: 40px
     &__explanation
         width: 75vw
         text-align: center
+        +mq(xsmall)
+            width: 90vw
+        +mq(medium)
+            font-size: 30px
+        +mq(xlarge)
+            font-size: 16px
+        +mq(large)
+            font-size: 30px
+        +mq(extra-large)
+            width: 50vw
+            font-size: 22px
