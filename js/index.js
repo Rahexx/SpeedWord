@@ -1,21 +1,33 @@
 import Game from './game';
+import { stopCount, startCount } from './timer';
 
 const input = document.querySelector('.game__input');
 const button = document.querySelector('.game__start');
-const countingDownText = document.querySelector('.game__time-value');
-let countDown = 4;
+const levelElement = document.querySelector('.game__level');
+const passwordElement = document.querySelector('.game__password');
+const game = new Game();
+let countingDown;
+
+function checkResult() {
+  const result = game.checkInputValue(this.value.toLowerCase());
+
+  if (result) {
+    game.setScore(game.getScore() + 1);
+    stopCount(countingDown, game.getScore());
+  }
+}
 
 function startGame() {
-  countingDownText.classList.add('game__time-value--animate');
-  const countingDown = setInterval(() => {
-    countingDownText.textContent = countDown;
+  const level = game.getLevels()[game.getCurrentLevel() - 1];
+  const counting = level.countingDown;
 
-    if (countDown === 0) {
-      clearInterval(countingDown);
-    } else {
-      countDown--;
-    }
-  }, 1000);
+  game.setCurrentLevel(level.name);
+  game.setCurrentPassword(level.passwords[0]);
+
+  levelElement.textContent = game.getCurrentLevel();
+  passwordElement.textContent = game.getCurrentPassword();
+
+  countingDown = startCount(counting, countingDown);
 }
 
 function unlockInput(e) {
@@ -25,6 +37,4 @@ function unlockInput(e) {
 }
 
 button.addEventListener('click', unlockInput);
-input.addEventListener('input', () => {
-  // TODO: function call game.checkInput()
-});
+input.addEventListener('input', checkResult);

@@ -35,7 +35,7 @@ class Game {
     ];
     this.currentLevel = 1;
     this.currentCountingDown = 0;
-    this.currentPasswords = [];
+    this.currentPassword = '';
     this.score = 0;
     this.gameTime = 0;
   }
@@ -60,12 +60,12 @@ class Game {
     this.currentCountingDown = time;
   }
 
-  getCurrentPasswords() {
-    return this.currentPasswords;
+  getCurrentPassword() {
+    return this.currentPassword;
   }
 
-  setCurrentPasswords(passwords) {
-    this.currentPasswords = passwords;
+  setCurrentPassword(password) {
+    this.currentPassword = password;
   }
 
   getScore() {
@@ -85,6 +85,11 @@ class Game {
   }
 
   // TODO: create method checkInput
+  checkInputValue(value) {
+    if (this.getCurrentPassword().toLowerCase() === value) return true;
+
+    return false;
+  }
 }
 
 export default Game;
