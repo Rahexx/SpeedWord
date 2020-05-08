@@ -12,8 +12,7 @@ function checkResult() {
   const result = game.checkInputValue(this.value.toLowerCase());
 
   if (result) {
-    game.setScore(game.getScore() + 1);
-    stopCount(countingDown, game.getScore());
+    stopCount(countingDown, game.getScore(), game.getGameTime());
   }
 }
 
@@ -27,7 +26,7 @@ function startGame() {
   levelElement.textContent = game.getCurrentLevel();
   passwordElement.textContent = game.getCurrentPassword();
 
-  countingDown = startCount(counting, countingDown);
+  countingDown = startCount(counting, countingDown, game);
 }
 
 function unlockInput(e) {

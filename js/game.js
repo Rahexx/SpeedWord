@@ -80,13 +80,15 @@ class Game {
     return this.gameTime;
   }
 
-  setTime(time) {
+  setGameTime(time) {
     this.gameTime = time;
   }
 
-  // TODO: create method checkInput
   checkInputValue(value) {
-    if (this.getCurrentPassword().toLowerCase() === value) return true;
+    if (this.getCurrentPassword().toLowerCase() === value) {
+      this.setScore(this.getScore() + 1);
+      return true;
+    }
 
     return false;
   }
