@@ -6,6 +6,7 @@ function stopCount(countingDown, score, time) {
   countingDownElement.style.animationIterationCount = 0;
   countingDownElement.style.transform = 'scale(1)';
   passwordElement.textContent = `Twój wynik wpisanych haseł to: ${score} w czasie: ${time}s`;
+  countingDownElement.style.animationIterationCount = 'paused';
   input.value = '';
   input.disabled = true;
   clearInterval(countingDown);
@@ -14,7 +15,6 @@ function stopCount(countingDown, score, time) {
 function startCount(counting, countingDown, game) {
   let count = counting;
   countingDownElement.classList.add('game__time-value--animate');
-  countingDownElement.style.animationIterationCount = count;
   countingDownElement.textContent = count;
 
   countingDown = setInterval(() => {
@@ -32,6 +32,7 @@ function startCount(counting, countingDown, game) {
 }
 
 function reCount(countingDown, game, counting) {
+  countingDownElement.classList.remove('game__time-value--animate');
   clearInterval(countingDown);
   const indexInterval = startCount(counting, countingDown, game);
 
