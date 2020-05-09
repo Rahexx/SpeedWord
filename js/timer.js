@@ -1,12 +1,14 @@
 const countingDownElement = document.querySelector('.game__time-value');
 const passwordElement = document.querySelector('.game__password');
 const input = document.querySelector('.game__input');
+const button = document.querySelector('.game__start');
 
 function stopCount(countingDown, score, time) {
   countingDownElement.style.animationIterationCount = 0;
+  countingDownElement.style.animationPlayState = 'paused';
   countingDownElement.style.transform = 'scale(1)';
   passwordElement.textContent = `Twój wynik wpisanych haseł to: ${score} w czasie: ${time}s`;
-  countingDownElement.style.animationIterationCount = 'paused';
+  button.textContent = 'Start';
   input.value = '';
   input.disabled = true;
   clearInterval(countingDown);
@@ -39,4 +41,4 @@ function reCount(countingDown, game, counting) {
   return indexInterval;
 }
 
-export { startCount, reCount };
+export { startCount, reCount, stopCount };

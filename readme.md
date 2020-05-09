@@ -24,4 +24,4 @@
 
 ## Status
 
-Project is _is procceed_.
+Project is _finished_.
