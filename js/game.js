@@ -87,10 +87,16 @@ class Game {
   checkInputValue(value) {
     if (this.getCurrentPassword().toLowerCase() === value) {
       this.setScore(this.getScore() + 1);
-      return true;
+      const level = this.getLevels()[this.getCurrentLevel() - 1];
+      const currentPassword = this.getCurrentPassword();
+      const lengthPasswords = level.passwords.length;
+      const indexPassword = level.passwords.indexOf(currentPassword);
+      const nextLevel = lengthPasswords - 1 === indexPassword;
+
+      return [nextLevel, indexPassword + 1, true];
     }
 
-    return false;
+    return [false, false];
   }
 }
 

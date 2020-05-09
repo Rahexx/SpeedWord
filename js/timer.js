@@ -12,19 +12,21 @@ function stopCount(countingDown, score, time) {
 function startCount(counting, countingDown, game) {
   let count = counting;
   countingDownElement.classList.add('game__time-value--animate');
-  countingDownElement.style.animationIterationCount = count + 1;
-  countingDown = setInterval(() => {
-    countingDownElement.textContent = count;
+  countingDownElement.style.animationIterationCount = count;
+  countingDownElement.textContent = count;
 
+  countingDown = setInterval(() => {
     if (count === 0) {
-      stopCount();
+      stopCount(countingDown, game.getScore(), game.getGameTime());
     } else {
       game.setGameTime(game.getGameTime() + 1);
       count--;
     }
+
+    countingDownElement.textContent = count;
   }, 1000);
 
   return countingDown;
 }
 
-export { stopCount, startCount };
+export default startCount;
