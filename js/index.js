@@ -1,5 +1,5 @@
 import Game from './game';
-import { startCount } from './timer';
+import { startCount, reCount } from './timer';
 
 const input = document.querySelector('.game__input');
 const button = document.querySelector('.game__start');
@@ -22,6 +22,7 @@ function checkResult() {
     const level = nextLevel
       ? game.getLevels()[game.getCurrentLevel()]
       : game.getLevels()[game.getCurrentLevel() - 1];
+    const counting = level.countingDown;
 
     if (nextLevel) {
       game.setCurrentLevel(level.name);
@@ -33,6 +34,7 @@ function checkResult() {
       setTextElement();
       input.value = '';
     }
+    countingDown = reCount(countingDown, game, counting);
   }
 }
 
