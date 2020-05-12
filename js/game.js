@@ -1,6 +1,6 @@
 class Game {
   constructor() {
-    this.levels = [
+    this._levels = [
       {
         name: '1',
         countingDown: 8,
@@ -33,62 +33,66 @@ class Game {
         ],
       },
     ];
-    this.currentLevel = 1;
-    this.currentCountingDown = 0;
-    this.currentPassword = '';
-    this.score = 0;
-    this.gameTime = 0;
+    this._currentLevel = 1;
+    this._currentCountingDown = 0;
+    this._currentPassword = '';
+    this._score = 0;
+    this._gameTime = 0;
   }
 
-  getLevels() {
-    return this.levels;
+  get levels() {
+    return this._levels;
   }
 
-  getCurrentLevel() {
-    return this.currentLevel;
+  set levels(newLevels) {
+    this._levels = newLevels;
   }
 
-  setCurrentLevel(level) {
-    this.currentLevel = level;
+  get currentLevel() {
+    return this._currentLevel;
   }
 
-  getCurrentCountingDown() {
-    return this.currentCountingDown;
+  set currentLevel(level) {
+    this._currentLevel = level;
   }
 
-  setCurrentCountingDown(time) {
-    this.currentCountingDown = time;
+  get currentCountingDown() {
+    return this._currentCountingDown;
   }
 
-  getCurrentPassword() {
-    return this.currentPassword;
+  set currentCountingDown(time) {
+    this._currentCountingDown = time;
   }
 
-  setCurrentPassword(password) {
-    this.currentPassword = password;
+  get currentPassword() {
+    return this._currentPassword;
   }
 
-  getScore() {
-    return this.score;
+  set currentPassword(password) {
+    this._currentPassword = password;
   }
 
-  setScore(number) {
-    this.score = number;
+  get score() {
+    return this._score;
   }
 
-  getGameTime() {
-    return this.gameTime;
+  set score(number) {
+    this._score = number;
   }
 
-  setGameTime(time) {
-    this.gameTime = time;
+  get gameTime() {
+    return this._gameTime;
+  }
+
+  set gameTime(time) {
+    this._gameTime = time;
   }
 
   checkInputValue(value) {
-    if (this.getCurrentPassword().toLowerCase() === value) {
-      this.setScore(this.getScore() + 1);
-      const level = this.getLevels()[this.getCurrentLevel() - 1];
-      const currentPassword = this.getCurrentPassword();
+    if (this.currentPassword.toLowerCase() === value) {
+      this.score = this.score + 1;
+      const level = this.levels[this.currentLevel - 1];
+      const currentPassword = this.currentPassword;
       const lengthPasswords = level.passwords.length;
       const indexPassword = level.passwords.indexOf(currentPassword);
       const nextLevel = lengthPasswords - 1 === indexPassword;

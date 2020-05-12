@@ -1,5 +1,5 @@
-import Game from './game';
-import { startCount, reCount, stopCount } from './timer';
+import Game from './Game.js';
+import { startCount, reCount, stopCount } from './timer.js';
 
 const input = document.querySelector('.game__input');
 const button = document.querySelector('.game__start');
@@ -9,8 +9,8 @@ const game = new Game();
 let countingDown;
 
 function setTextElement() {
-  levelElement.textContent = game.getCurrentLevel();
-  passwordElement.textContent = game.getCurrentPassword();
+  levelElement.textContent = game.currentLevel;
+  passwordElement.textContent = game.currentPassword;
 }
 
 function checkResult() {
@@ -18,25 +18,25 @@ function checkResult() {
     this.value.toLowerCase(),
   );
 
-  if (!game.getLevels()[game.getCurrentLevel()] && nextLevel) {
-    stopCount(countingDown, game.getScore(), game.getGameTime());
+  if (!game.levels[game.currentLevel] && nextLevel) {
+    stopCount(countingDown, game.score, game.gameTime);
     button.textContent = 'Start';
     return;
   }
 
   if (result) {
     const level = nextLevel
-      ? game.getLevels()[game.getCurrentLevel()]
-      : game.getLevels()[game.getCurrentLevel() - 1];
+      ? game.levels[game.currentLevel]
+      : game.levels[game.currentLevel - 1];
     const counting = level.countingDown;
 
     if (nextLevel) {
-      game.setCurrentLevel(level.name);
-      game.setCurrentPassword(level.passwords[0]);
+      game.currentLevel = level.name;
+      game.currentPassword = level.passwords[0];
       setTextElement();
       input.value = '';
     } else {
-      game.setCurrentPassword(level.passwords[index]);
+      game.currentPassword = level.passwords[index];
       setTextElement();
       input.value = '';
     }
@@ -45,15 +45,14 @@ function checkResult() {
 }
 
 function startGame() {
-  const level = game.getLevels()[0];
+  const level = game.levels[0];
   const counting = level.countingDown;
 
-  game.setCurrentLevel(level.name);
-  game.setCurrentPassword(level.passwords[0]);
-  game.setGameTime(0);
-  game.setScore(0);
+  game.currentLevel = level.name;
+  game.currentPassword = level.passwords[0];
+  game.gameTime = 0;
+  game.score = 0;
   setTextElement();
-
   countingDown = startCount(counting, countingDown, game);
 }
 

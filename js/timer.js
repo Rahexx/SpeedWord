@@ -21,9 +21,9 @@ function startCount(counting, countingDown, game) {
 
   countingDown = setInterval(() => {
     if (count === 0) {
-      stopCount(countingDown, game.getScore(), game.getGameTime());
+      stopCount(countingDown, game.score, game.gameTime);
     } else {
-      game.setGameTime(game.getGameTime() + 1);
+      game.gameTime = game.gameTime + 1;
       count--;
     }
 
