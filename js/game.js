@@ -1,6 +1,10 @@
+import Timer from './Timer';
+
 class Game {
   constructor() {
-    this._levels = [
+    this.levelElement = document.querySelector('.game__level');
+    this.passwordElement = document.querySelector('.game__password');
+    this.levels = [
       {
         name: '1',
         countingDown: 8,
@@ -33,66 +37,63 @@ class Game {
         ],
       },
     ];
-    this._currentLevel = 1;
-    this._currentCountingDown = 0;
-    this._currentPassword = '';
-    this._score = 0;
-    this._gameTime = 0;
+    this.currentLevel = 1;
+    this.currentCountingDown = 0;
+    this.currentPassword = '';
+    this.score = 0;
+    this.gameTime = 0;
+    this.timer = new Timer();
   }
 
-  get levels() {
-    return this._levels;
+  getLevels() {
+    return this.levels;
   }
 
-  set levels(newLevels) {
-    this._levels = newLevels;
+  getCurrentLevel() {
+    return this.currentLevel;
   }
 
-  get currentLevel() {
-    return this._currentLevel;
+  setCurrentLevel(level) {
+    this.currentLevel = level;
   }
 
-  set currentLevel(level) {
-    this._currentLevel = level;
+  getCurrentCountingDown() {
+    return this.currentCountingDown;
   }
 
-  get currentCountingDown() {
-    return this._currentCountingDown;
+  setCurrentCountingDown(time) {
+    this.currentCountingDown = time;
   }
 
-  set currentCountingDown(time) {
-    this._currentCountingDown = time;
+  getCurrentPassword() {
+    return this.currentPassword;
   }
 
-  get currentPassword() {
-    return this._currentPassword;
+  setCurrentPassword(password) {
+    this.currentPassword = password;
   }
 
-  set currentPassword(password) {
-    this._currentPassword = password;
+  getScore() {
+    return this.score;
   }
 
-  get score() {
-    return this._score;
+  setScore(number) {
+    this.score = number;
   }
 
-  set score(number) {
-    this._score = number;
+  getGameTime() {
+    return this.gameTime;
   }
 
-  get gameTime() {
-    return this._gameTime;
-  }
-
-  set gameTime(time) {
-    this._gameTime = time;
+  setGameTime(time) {
+    this.gameTime = time;
   }
 
   checkInputValue(value) {
-    if (this.currentPassword.toLowerCase() === value) {
-      this.score = this.score + 1;
-      const level = this.levels[this.currentLevel - 1];
-      const currentPassword = this.currentPassword;
+    if (this.getCurrentPassword().toLowerCase() === value) {
+      this.setScore(this.getScore() + 1);
+      const level = this.getLevels()[this.getCurrentLevel() - 1];
+      const currentPassword = this.getCurrentPassword();
       const lengthPasswords = level.passwords.length;
       const indexPassword = level.passwords.indexOf(currentPassword);
       const nextLevel = lengthPasswords - 1 === indexPassword;
@@ -101,6 +102,63 @@ class Game {
     }
 
     return [false, false];
+  }
+
+  setTextElement() {
+    this.levelElement.textContent = this.getCurrentLevel();
+    this.passwordElement.textContent = this.getCurrentPassword();
+  }
+
+  changeGameInfo(level, input, index) {
+    this.setCurrentPassword(level.passwords[index]);
+    this.setTextElement();
+    input.value = '';
+  }
+
+  isNextLevel(nextLevel, index, input, game) {
+    const level = nextLevel
+      ? this.getLevels()[this.getCurrentLevel()]
+      : this.getLevels()[this.getCurrentLevel() - 1];
+    const counting = level.countingDown;
+
+    if (nextLevel) {
+      this.setCurrentLevel(level.name);
+      this.changeGameInfo(level, input, 0);
+    } else {
+      this.changeGameInfo(level, input, index);
+    }
+
+    this.timer.reCount(counting, game);
+  }
+
+  checkResult(game) {
+    const input = document.querySelector('.game__input');
+    const button = document.querySelector('.game__start');
+    const [nextLevel, index, result] = this.checkInputValue(
+      input.value.toLowerCase(),
+    );
+
+    if (!this.getLevels()[this.getCurrentLevel()] && nextLevel) {
+      this.timer.stopCount(this.getScore(), this.getGameTime());
+      button.textContent = 'Start';
+      button.style.opacity = 1;
+      return;
+    }
+
+    if (result) this.isNextLevel(nextLevel, index, input, game);
+  }
+
+  startGame(game) {
+    const level = this.getLevels()[0];
+    const counting = level.countingDown;
+
+    this.setCurrentLevel(level.name);
+    this.setCurrentPassword(level.passwords[0]);
+    this.setGameTime(0);
+    this.setScore(0);
+    this.setTextElement();
+
+    this.timer.startCount(counting, game);
   }
 }
 
